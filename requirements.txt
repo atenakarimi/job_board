@@ -1,0 +1,5 @@
+apify-client==2.5.0
+apify_shared== 2.2.0
+streamlit==1.35.0
+pandas==2.2.2
+python-jobspy>=0.1.0

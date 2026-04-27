@@ -1,0 +1,12 @@
+# Cache and generated files
+jobs_cache.json
+jobs_export.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.env
