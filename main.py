@@ -232,22 +232,33 @@ def run_glassdoor_scraper() -> list[dict]:
         return []
 
     keywords = [
-        # AI / Artificial Intelligence
-        "AI Engineer", "AI Developer", "Artificial Intelligence Engineer",
-        "Generative AI Engineer", "GenAI Engineer", "Applied AI Engineer",
-        "AI Architect", "AI Researcher", "AI Scientist",
+        # AI / Artificial Intelligence — full coverage
+        "AI Engineer", "AI Developer", "AI Architect", "AI Researcher",
+        "AI Scientist", "AI Specialist", "AI Consultant", "AI Lead",
+        "Applied AI Engineer", "Artificial Intelligence Engineer",
+        "Artificial Intelligence Researcher", "Artificial Intelligence Scientist",
+        "Generative AI Engineer", "GenAI Engineer", "Conversational AI Engineer",
         # LLM / RAG
-        "LLM Engineer", "LLM Developer", "Large Language Model Engineer",
-        "RAG Engineer", "Prompt Engineer",
+        "LLM Engineer", "LLM Developer", "LLM Researcher",
+        "Large Language Model Engineer", "RAG Engineer", "Prompt Engineer",
         # ML / Data Science
-        "Machine Learning Engineer", "ML Engineer", "MLOps Engineer",
-        "Data Scientist", "Research Scientist", "Applied Scientist",
+        "Machine Learning Engineer", "ML Engineer", "ML Researcher",
+        "MLOps Engineer", "Data Scientist", "Research Scientist",
+        "Applied Scientist", "Decision Scientist",
         # NLP / Vision
         "NLP Engineer", "Computer Vision Engineer",
-        # Data Engineering / Analytics
-        "Data Analyst", "Data Engineer",
+        # Data Engineering / Analytics / Architecture
+        "Data Analyst", "Data Engineer", "Data Science", "Data Architect",
+        "Analytics Engineer", "Business Intelligence", "Statistician",
+        "Quantitative Analyst",
+        # Data Governance / Quality / Management
+        "Data Governance", "Data Quality", "Data Management",
+        "Data Product Manager", "Reporting Analyst",
+        # Finance / Risk (Luxembourg-specific)
+        "Risk Analytics", "Credit Risk Analyst",
         # French terms
         "Intelligence Artificielle", "IA Data Engineer",
+        "Ingénieur IA", "Ingénieur Données",
     ]
     raw_rows = []
     for kw in keywords:
