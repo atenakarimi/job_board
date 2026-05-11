@@ -70,6 +70,14 @@ LINKEDIN_SEARCH_URLS = [
     "https://www.linkedin.com/jobs/search/?keywords=Business+Intelligence&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=Statistician&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=Quantitative+Analyst&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Governance&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Quality&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Management&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Product+Manager&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Risk+Analytics&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Credit+Risk+Analyst&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Reporting+Analyst&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Decision+Scientist&location=Luxembourg&f_TPR=r1209600",
     # www.linkedin.com — French terms (Luxembourg is trilingual: FR/DE/LU)
     "https://www.linkedin.com/jobs/search/?keywords=Intelligence+Artificielle&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=IA+Data+Engineer&location=Luxembourg&f_TPR=r1209600",
@@ -90,6 +98,11 @@ LINKEDIN_SEARCH_URLS = [
     "https://lu.linkedin.com/jobs/search/?keywords=Analytics+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Business+Intelligence&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Quantitative+Analyst&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Data+Governance&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Data+Quality&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Data+Management&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Risk+Analytics&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Decision+Scientist&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Intelligence+Artificielle&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=IA+Data+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Ing%C3%A9nieur+Donn%C3%A9es&location=Luxembourg&f_TPR=r1209600",
@@ -117,6 +130,7 @@ TITLE_WORD_PATTERNS = [
     r'\bbi\b',                    # BI (Business Intelligence)
     r'\bds\b',                    # DS (Data Science/Scientist)
     r'\bcv\b',                    # CV (Computer Vision)
+    r'\bquant\b',                 # Quant (Quantitative Analyst/Researcher)
 ]
 
 # Phrase patterns checked against full title (no word-boundary needed — they're unambiguous)
@@ -148,6 +162,14 @@ TITLE_PHRASE_PATTERNS = [
     "knowledge graph",
     "graph neural",
     "ingénieur données",
+    "data quality",
+    "data mesh",
+    "data lakehouse",
+    "data management",
+    "data product",
+    "decision science",
+    "risk analytics",
+    "credit risk",
 ]
 
 IRRELEVANT_KEYWORDS = [
