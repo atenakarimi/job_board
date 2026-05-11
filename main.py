@@ -225,10 +225,10 @@ def run_scraper() -> list[dict]:
     return items
 
 
-def run_glassdoor_scraper() -> list[dict]:
-    """Scrape Glassdoor jobs via jobspy (free, no token needed)."""
+def run_jobspy_scraper() -> list[dict]:
+    """Scrape Glassdoor, Indeed and Google Jobs via jobspy (free, no token needed)."""
     if not _JOBSPY_AVAILABLE:
-        log.warning("python-jobspy not installed — skipping Glassdoor. Run: pip install python-jobspy")
+        log.warning("python-jobspy not installed — skipping. Run: pip install python-jobspy")
         return []
 
     keywords = [
@@ -260,11 +260,12 @@ def run_glassdoor_scraper() -> list[dict]:
         "Intelligence Artificielle", "IA Data Engineer",
         "Ingénieur IA", "Ingénieur Données",
     ]
+
     raw_rows = []
     for kw in keywords:
         try:
             df = jobspy.scrape_jobs(
-                site_name=["glassdoor"],
+                site_name=["glassdoor", "indeed", "google"],
                 search_term=kw,
                 location="Luxembourg",
                 results_wanted=30,
@@ -272,15 +273,17 @@ def run_glassdoor_scraper() -> list[dict]:
                 country_indeed="Luxembourg",
             )
             raw_rows.append(df)
-            log.info("Glassdoor '%s': %d results", kw, len(df))
+            log.info("jobspy '%s': %d results", kw, len(df))
         except Exception as e:
-            log.warning("Glassdoor scrape failed for '%s': %s", kw, e)
+            log.warning("jobspy scrape failed for '%s': %s", kw, e)
 
     if not raw_rows:
         return []
 
     import pandas as pd
     combined = pd.concat(raw_rows, ignore_index=True).drop_duplicates(subset=["job_url"])
+
+    SOURCE_LABEL = {"glassdoor": "Glassdoor", "indeed": "Indeed", "google": "Google Jobs"}
 
     items = []
     for _, row in combined.iterrows():
@@ -289,6 +292,7 @@ def run_glassdoor_scraper() -> list[dict]:
         location = str(row.get("location", "Luxembourg") or "Luxembourg").strip()
         description = str(row.get("description", "") or "")
         job_url = str(row.get("job_url", "") or "")
+        site = str(row.get("site", "") or "").lower()
         posted_at = ""
         if row.get("date_posted") is not None:
             try:
@@ -308,10 +312,10 @@ def run_glassdoor_scraper() -> list[dict]:
             "link": job_url,
             "descriptionText": description,
             "id": hashlib.md5(job_url.encode()).hexdigest(),
-            "_source": "Glassdoor",
+            "_source": SOURCE_LABEL.get(site, site.capitalize()),
         })
 
-    log.info("Glassdoor total: %d unique items", len(items))
+    log.info("jobspy total: %d unique items", len(items))
     return items
 
 
@@ -554,7 +558,7 @@ def get_jobs(force_refresh: bool = False) -> list[dict]:
             return cached
 
     raw_linkedin = run_scraper()
-    raw_glassdoor = run_glassdoor_scraper()
+    raw_glassdoor = run_jobspy_scraper()
     jobs = process_raw_items(raw_linkedin + raw_glassdoor)
     save_cache(jobs)
     return jobs
