@@ -307,13 +307,13 @@ with fc1:
     seniority_filter = st.selectbox(
         "Seniority",
         ["All", "Junior", "Intern", "Mid", "Senior", "Director", "VP", "C-Suite"],
-        index=1,  # default: Junior
+        index=0,  # default: All
     )
 
 with fc2:
     exp_filter = st.slider(
         "Max experience (years)",
-        min_value=0, max_value=10, value=5, step=1
+        min_value=0, max_value=10, value=10, step=1
     )
 
 with fc3:
