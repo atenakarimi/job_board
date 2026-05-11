@@ -31,22 +31,56 @@ log = logging.getLogger(__name__)
 APIFY_TOKEN = os.getenv("APIFY_API_TOKEN", "")
 
 LINKEDIN_SEARCH_URLS = [
-    # www.linkedin.com
-    "https://www.linkedin.com/jobs/search/?keywords=Data+Scientist&location=Luxembourg&f_TPR=r1209600",
-    "https://www.linkedin.com/jobs/search/?keywords=Machine+Learning+Engineer&location=Luxembourg&f_TPR=r1209600",
+    # www.linkedin.com — AI / LLM / RAG
     "https://www.linkedin.com/jobs/search/?keywords=AI+Engineer&location=Luxembourg&f_TPR=r1209600",
-    "https://www.linkedin.com/jobs/search/?keywords=Data+Analyst&location=Luxembourg&f_TPR=r1209600",
-    "https://www.linkedin.com/jobs/search/?keywords=Data+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=AI+Developer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=AI+Architect&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=AI+Researcher&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=AI+Scientist&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=AI+Specialist&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Applied+AI+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Artificial+Intelligence+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Artificial+Intelligence+Researcher&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Generative+AI+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=GenAI+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=LLM+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=LLM+Developer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=LLM+Researcher&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Large+Language+Model+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=RAG+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Prompt+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Conversational+AI+Engineer&location=Luxembourg&f_TPR=r1209600",
+    # www.linkedin.com — ML / Data Science
+    "https://www.linkedin.com/jobs/search/?keywords=Machine+Learning+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=ML+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=ML+Researcher&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Scientist&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Research+Scientist+AI&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Applied+Scientist&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=MLOps+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=NLP+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=Computer+Vision+Engineer&location=Luxembourg&f_TPR=r1209600",
-    # lu.linkedin.com (Luxembourg-localised subdomain)
-    "https://lu.linkedin.com/jobs/search/?keywords=Data+Scientist&location=Luxembourg&f_TPR=r1209600",
-    "https://lu.linkedin.com/jobs/search/?keywords=Machine+Learning+Engineer&location=Luxembourg&f_TPR=r1209600",
+    # www.linkedin.com — Data Engineering / Analytics
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Analyst&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Engineer&location=Luxembourg&f_TPR=r1209600",
+    # www.linkedin.com — French terms (Luxembourg is bilingual)
+    "https://www.linkedin.com/jobs/search/?keywords=Intelligence+Artificielle&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=IA+Data+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Ing%C3%A9nieur+IA&location=Luxembourg&f_TPR=r1209600",
+    # lu.linkedin.com (Luxembourg-localised subdomain) — same keyword set
     "https://lu.linkedin.com/jobs/search/?keywords=AI+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=AI+Developer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Artificial+Intelligence+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Generative+AI+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=LLM+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=RAG+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Machine+Learning+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Data+Scientist&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Data+Analyst&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Data+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=NLP+Engineer&location=Luxembourg&f_TPR=r1209600",
-    "https://lu.linkedin.com/jobs/search/?keywords=Computer+Vision+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Intelligence+Artificielle&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=IA+Data+Engineer&location=Luxembourg&f_TPR=r1209600",
 ]
 
 ACTOR_ID = "curious_coder/linkedin-jobs-scraper"
@@ -56,14 +90,48 @@ ACTOR_INPUT = {
     "scrapeCompany": False,
 }
 
-RELEVANT_KEYWORDS = [
-    "data scientist", "machine learning", "ml engineer", "ai engineer",
-    "data analyst", "data engineer", "nlp", "natural language processing",
-    "computer vision", "deep learning", "llm", "large language model",
-    "artificial intelligence", "data science", "mlops", "rag",
-    "neural network", "applied scientist", "research scientist",
-    "analytics engineer", "business intelligence", "bi analyst",
-    "junior data", "data intern", "ai intern", "ml intern",
+# Word-boundary patterns: any job whose title contains these words gets fetched
+# regardless of what surrounds them ("Senior AI Architect" / "IA & Data Engineer" / etc.)
+TITLE_WORD_PATTERNS = [
+    r'\bai\b',                    # AI — catches any permutation
+    r'\bllm\b',                   # LLM
+    r'\brag\b',                   # RAG
+    r'\bml\b',                    # ML
+    r'\bnlp\b',                   # NLP
+    r'\bgenai\b',                 # GenAI
+    r'\bmlops\b',                 # MLOps
+    r'\bia\b',                    # IA (French: Intelligence Artificielle)
+]
+
+# Phrase patterns checked against full title (no word-boundary needed — they're unambiguous)
+TITLE_PHRASE_PATTERNS = [
+    "artificial intelligence",
+    "machine learning",
+    "deep learning",
+    "generative ai",
+    "large language model",
+    "neural network",
+    "computer vision",
+    "intelligence artificielle",
+    "retrieval augmented",
+    "foundation model",
+    "prompt engineer",
+    "data scientist",
+    "data analyst",
+    "data engineer",
+    "data science",
+    "analytics engineer",
+    "business intelligence",
+    "applied scientist",
+    "research scientist",
+]
+
+IRRELEVANT_KEYWORDS = [
+    ".net developer", "servicenow", "devsecops", "java developer",
+    "php developer", "sap consultant", "erp", "accountant",
+    "financial controller", "nurse", "doctor", "sales manager",
+    "marketing manager", "lawyer", "legal counsel", "hr manager",
+    "secretary", "receptionist", "driver", "warehouse",
 ]
 
 IRRELEVANT_KEYWORDS = [
@@ -123,8 +191,22 @@ def run_glassdoor_scraper() -> list[dict]:
         return []
 
     keywords = [
-        "Data Scientist", "Machine Learning Engineer", "AI Engineer",
-        "Data Analyst", "Data Engineer", "NLP Engineer",
+        # AI / Artificial Intelligence
+        "AI Engineer", "AI Developer", "Artificial Intelligence Engineer",
+        "Generative AI Engineer", "GenAI Engineer", "Applied AI Engineer",
+        "AI Architect", "AI Researcher", "AI Scientist",
+        # LLM / RAG
+        "LLM Engineer", "LLM Developer", "Large Language Model Engineer",
+        "RAG Engineer", "Prompt Engineer",
+        # ML / Data Science
+        "Machine Learning Engineer", "ML Engineer", "MLOps Engineer",
+        "Data Scientist", "Research Scientist", "Applied Scientist",
+        # NLP / Vision
+        "NLP Engineer", "Computer Vision Engineer",
+        # Data Engineering / Analytics
+        "Data Analyst", "Data Engineer",
+        # French terms
+        "Intelligence Artificielle", "IA Data Engineer",
     ]
     raw_rows = []
     for kw in keywords:
@@ -277,17 +359,27 @@ def job_fingerprint(title: str, company: str) -> str:
 # ---------------------------------------------------------------------------
 
 def is_relevant(title: str, description: str) -> bool:
-    text = (title + " " + description).lower()
+    title_lower = title.lower()
 
-    # Hard exclude
+    # Hard exclude — checked against title only
     for kw in IRRELEVANT_KEYWORDS:
-        if kw in text and kw not in text.replace(kw, "").join(RELEVANT_KEYWORDS):
-            if kw in title.lower():
-                return False
+        if kw in title_lower:
+            return False
 
-    # Must match at least one relevant keyword
-    for kw in RELEVANT_KEYWORDS:
-        if kw in text:
+    # Word-boundary patterns checked against title (e.g. \bai\b catches any "AI ..." title)
+    for pattern in TITLE_WORD_PATTERNS:
+        if re.search(pattern, title_lower):
+            return True
+
+    # Phrase patterns checked against title
+    for phrase in TITLE_PHRASE_PATTERNS:
+        if phrase in title_lower:
+            return True
+
+    # Fallback: check phrases against description too (catches roles with generic titles)
+    desc_lower = description.lower()
+    for phrase in TITLE_PHRASE_PATTERNS:
+        if phrase in desc_lower:
             return True
 
     return False
