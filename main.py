@@ -60,10 +60,17 @@ LINKEDIN_SEARCH_URLS = [
     "https://www.linkedin.com/jobs/search/?keywords=MLOps+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=NLP+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=Computer+Vision+Engineer&location=Luxembourg&f_TPR=r1209600",
-    # www.linkedin.com — Data Engineering / Analytics
+    # www.linkedin.com — Data Engineering / Analytics / Architecture
     "https://www.linkedin.com/jobs/search/?keywords=Data+Analyst&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=Data+Engineer&location=Luxembourg&f_TPR=r1209600",
-    # www.linkedin.com — French terms (Luxembourg is bilingual)
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Science&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Architect&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Data+Architecture&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Analytics+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Business+Intelligence&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Statistician&location=Luxembourg&f_TPR=r1209600",
+    "https://www.linkedin.com/jobs/search/?keywords=Quantitative+Analyst&location=Luxembourg&f_TPR=r1209600",
+    # www.linkedin.com — French terms (Luxembourg is trilingual: FR/DE/LU)
     "https://www.linkedin.com/jobs/search/?keywords=Intelligence+Artificielle&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=IA+Data+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://www.linkedin.com/jobs/search/?keywords=Ing%C3%A9nieur+IA&location=Luxembourg&f_TPR=r1209600",
@@ -79,8 +86,13 @@ LINKEDIN_SEARCH_URLS = [
     "https://lu.linkedin.com/jobs/search/?keywords=Data+Analyst&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Data+Engineer&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=NLP+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Data+Architect&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Analytics+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Business+Intelligence&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Quantitative+Analyst&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=Intelligence+Artificielle&location=Luxembourg&f_TPR=r1209600",
     "https://lu.linkedin.com/jobs/search/?keywords=IA+Data+Engineer&location=Luxembourg&f_TPR=r1209600",
+    "https://lu.linkedin.com/jobs/search/?keywords=Ing%C3%A9nieur+Donn%C3%A9es&location=Luxembourg&f_TPR=r1209600",
 ]
 
 ACTOR_ID = "curious_coder/linkedin-jobs-scraper"
@@ -101,6 +113,10 @@ TITLE_WORD_PATTERNS = [
     r'\bgenai\b',                 # GenAI
     r'\bmlops\b',                 # MLOps
     r'\bia\b',                    # IA (French: Intelligence Artificielle)
+    r'\bdata\b',                  # Data — catches Data Engineer, Data Analyst, Big Data, etc.
+    r'\bbi\b',                    # BI (Business Intelligence)
+    r'\bds\b',                    # DS (Data Science/Scientist)
+    r'\bcv\b',                    # CV (Computer Vision)
 ]
 
 # Phrase patterns checked against full title (no word-boundary needed — they're unambiguous)
@@ -124,6 +140,14 @@ TITLE_PHRASE_PATTERNS = [
     "business intelligence",
     "applied scientist",
     "research scientist",
+    "data architecture",
+    "data platform",
+    "data governance",
+    "quantitative analyst",
+    "quant analyst",
+    "knowledge graph",
+    "graph neural",
+    "ingénieur données",
 ]
 
 IRRELEVANT_KEYWORDS = [
@@ -132,14 +156,9 @@ IRRELEVANT_KEYWORDS = [
     "financial controller", "nurse", "doctor", "sales manager",
     "marketing manager", "lawyer", "legal counsel", "hr manager",
     "secretary", "receptionist", "driver", "warehouse",
-]
-
-IRRELEVANT_KEYWORDS = [
-    ".net developer", "servicenow", "devsecops", "java developer",
-    "php developer", "sap consultant", "erp", "accountant",
-    "financial controller", "nurse", "doctor", "sales manager",
-    "marketing manager", "lawyer", "legal counsel", "hr manager",
-    "secretary", "receptionist", "driver", "warehouse",
+    "crm consultant", "seo specialist", "devops engineer",
+    "network engineer", "system administrator", "helpdesk",
+    "it support", "graphic designer", "copywriter",
 ]
 
 SKILLS_LIST = [
